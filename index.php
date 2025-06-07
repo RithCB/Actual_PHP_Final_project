@@ -30,6 +30,7 @@
           <li class="nav-item">
             <a class="nav-link" href="SignUP.php">Sign up</a>
           </li>
+        
           
         </ul>
         <form class="d-flex" role="search" action="index.php" method="post">

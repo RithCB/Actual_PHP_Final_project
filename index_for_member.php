@@ -1,3 +1,7 @@
+<?php
+session_start(); 
+echo $_SESSION['student_name']; 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -186,19 +190,14 @@ else{
             <p><strong>Author:</strong> <span id="modalAuthor"></span></p>
             <p><strong>Year:</strong> <span id="modalYear"></span></p>
             <a id="modalLink" href="#" target="_blank"><button>View on Open Library</button></a>
-            <a id="modalLink2" onclick="borrow()" target="_blank"><button>Borrow</button></a>
+            <form id="borrowForm" method="POST" action="borrow_book.php" >
+            <input type="hidden" name="book_title" id="hiddenBookTitle">
+            <button  type="submit">Borrow and pick up in the library</button>
+          </form>
         </div>
     </div>
 
-    <nav aria-label="Page navigation example" >
-  <ul class="pagination justify-content-center" >
-    <li class="page-item "><a class="page-link pagination-color-warning" href="#">Previous</a></li>
-    <li class="page-item"><a class="page-link pagination-color-warning" href="#">1</a></li>
-    <li class="page-item"><a class="page-link pagination-color-warning" href="#">2</a></li>
-    <li class="page-item"><a class="page-link pagination-color-warning" href="#">3</a></li>
-    <li class="page-item"><a class="page-link pagination-color-warning" href="#">Next</a></li>
-  </ul>
-  </nav>
+    
 
 
     <script>
@@ -212,11 +211,13 @@ else{
             // Fix link issue
             document.getElementById("modalLink").href = previewUrl;
 
+            document.getElementById("hiddenBookTitle").value = title;
+
             // Show the modal
             document.getElementById("previewModal").style.display = "flex";
         }
         function borrow(){
-            alert("We will send the pdf file via your email soon. Thank you."); 
+            alert("Your booking has been updated in the system. You can pick up the book in the library.\nThank you."); 
         }   
 
         // Function to close the modal
