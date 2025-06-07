@@ -1,7 +1,10 @@
 <?php
 include("Database.php"); 
+session_start();
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // $_SESSION['student_name'] = $_POST['username']; 
     try {
         
         $username = mysqli_real_escape_string($conn, $_POST['username']);
@@ -28,7 +31,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "<script>alert('Database Error: " . $e->getMessage();
     }
 }
+
+
 ?>
+
 <script>
     //redirect file
     $(document).ready(function () {

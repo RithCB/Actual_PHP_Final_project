@@ -1,8 +1,9 @@
 
 <?php 
+session_start(); 
+
 
 include("Database.php"); // Ensure $conn is properly included
-session_start();
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($_POST['email']) && !empty($_POST['password'])) {
         $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -15,9 +16,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
 
+        
+
         if ($row = mysqli_fetch_assoc($result)) {
             // Verify the password
             if (password_verify($password, $row['password'])) {
+                $_SESSION['student_name'] = $row['username'];
                 echo "success"; 
                 exit;
             } else {
@@ -32,9 +36,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo "❌ Please fill in both email and password!";
     }
 
-    
+
+
+$_SESSION['student_name'] = $row['username'];     
 
 }
+
 
 mysqli_close($conn);
 ?>
