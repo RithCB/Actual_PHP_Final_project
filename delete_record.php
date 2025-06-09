@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['record_id'])) {
 
     if ($stmt->execute()) {
         // Redirect back to dashboard with a success message
-        echo "Successful"; 
+        header("Location: admin_dashboard.php"); 
     } else {
         echo "Error deleting record: " . $stmt->error;
     }
