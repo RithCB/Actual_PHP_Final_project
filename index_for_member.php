@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-echo $_SESSION['student_name']; 
+// echo $_SESSION['student_name']; 
 ?>
 <!DOCTYPE html>
 <html lang="en">
